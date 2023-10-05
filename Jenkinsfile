@@ -4,8 +4,8 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-        registry = '102634593196.dkr.ecr.us-east-1.amazonaws.com/devops_repository'
-        registryCredential = 'jenkins-ecr'
+        registry = '102634593196.dkr.ecr.us-east-1.amazonaws.com/devops-terra'
+        registryCredential = 'aws-credential'
         dockerimage = ''
     }
     stages {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Code Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean install package'
             }
         }
         stage('Test') {
